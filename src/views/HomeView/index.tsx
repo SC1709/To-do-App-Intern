@@ -1,6 +1,6 @@
 import React from "react";
 import { Todo } from '../../components/model';
-import DeleteButton from "../../components/Base/DeleteButton";
+import Button from "../../components/Base/Button";
 
 interface TodoListProps {
   todos: Todo[];
@@ -29,7 +29,13 @@ const HomeView: React.FC<TodoListProps> = ({ todos, toggleTodo, deleteTodo }) =>
             >
             {todo.text}
           </span>
-          <DeleteButton onDelete={() => deleteTodo(todo.id)} />
+          <Button
+            onClick={() => deleteTodo(todo.id)} 
+            className="bg-red-600 shadow hover:bg-red-700"
+            disabled={!todo.completed} 
+          >
+            Delete
+          </Button>
         </div>
       ))}
     </div>
